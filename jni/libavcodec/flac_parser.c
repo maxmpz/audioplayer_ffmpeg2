@@ -816,9 +816,21 @@ static int flac_parse(AVCodecParserContext *s, AVCodecContext *avctx,
                                               nb_desired * FLAC_AVG_FRAME_SIZE);
         }
 
+#if PAMP_CHANGES
+        // Pamp change (port of audioplayer_ffmpeg commit 52d86aaf, "963-flac"): only bail when we ACTUALLY have
+        // some headers buffered. Some flac files embed a large image (METADATA_BLOCK_PICTURE) and/or trailing trash
+        // that gets fed here as flac data; with the stock guard (nb_headers_buffered==0 -> size/AVG > 0 is always
+        // true) the parser gives up immediately and the demuxer returns no frames (immediate EOF). Requiring
+        // nb_headers_buffered>0 lets the parser keep looking past the image/trash to find real frame headers.
+        if (fpc->nb_headers_buffered &&
+            !flac_fifo_space(&fpc->fifo_buf) &&
+            flac_fifo_size(&fpc->fifo_buf) / FLAC_AVG_FRAME_SIZE >
+            fpc->nb_headers_buffered * 20) {
+#else
         if (!flac_fifo_space(&fpc->fifo_buf) &&
             flac_fifo_size(&fpc->fifo_buf) / FLAC_AVG_FRAME_SIZE >
             fpc->nb_headers_buffered * 20) {
+#endif
             /* There is less than one valid flac header buffered for 20 headers
              * buffered. Therefore the fifo is most likely filled with invalid
              * data and the input is not a flac file. */
