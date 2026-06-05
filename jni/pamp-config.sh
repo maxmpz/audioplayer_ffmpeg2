@@ -29,7 +29,7 @@ else
 fi
 
 FFMPEG_PATH=../FFmpeg
-NDK_PATH=/Users/maksimpetrov/Library/Android/sdk/ndk/29.0.13599879
+NDK_PATH=/Users/maksimpetrov/Library/Android/sdk/ndk/30.0.14904198
 LOCAL_PATH=$PWD
 MIN=
 NM_PREFIX=llvm-
