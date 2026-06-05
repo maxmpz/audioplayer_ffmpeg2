@@ -1,0 +1,5 @@
+/obj/
+/libs/
+/jni/disasm64.sh
+/jni/addr2line64.sh
+/PORTING-PLAN.md
