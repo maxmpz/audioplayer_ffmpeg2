@@ -801,7 +801,7 @@ static const AVOption options[] = {
 #if PAMP_CHANGES
     {"key_password", NULL_IF_CONFIG_SMALL("Password for the private key file"), OFFSET(priv_key_pw),  AV_OPT_TYPE_STRING, .flags = TLS_OPTFL },
 #else
-    {"key_password", "Password for the private key file", OFFSET(priv_key_pw),  AV_OPT_TYPE_STRING, .flags = TLS_OPTFL },
+    {"key_password", NULL_IF_CONFIG_SMALL("Password for the private key file"), OFFSET(priv_key_pw),  AV_OPT_TYPE_STRING, .flags = TLS_OPTFL },
 #endif
     { NULL }
 };

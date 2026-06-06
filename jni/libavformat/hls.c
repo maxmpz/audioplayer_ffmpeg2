@@ -2810,11 +2810,11 @@ static int hls_probe(const AVProbeData *p)
 #define OFFSET(x) offsetof(HLSContext, x)
 #define FLAGS AV_OPT_FLAG_DECODING_PARAM
 static const AVOption hls_options[] = {
-    {"live_start_index", "segment index to start live streams at (negative values are from the end)",
+    {"live_start_index", NULL_IF_CONFIG_SMALL("segment index to start live streams at (negative values are from the end)"),
         OFFSET(live_start_index), AV_OPT_TYPE_INT, {.i64 = -3}, INT_MIN, INT_MAX, FLAGS},
-    {"prefer_x_start", "prefer to use #EXT-X-START if it's in playlist instead of live_start_index",
+    {"prefer_x_start", NULL_IF_CONFIG_SMALL("prefer to use #EXT-X-START if it's in playlist instead of live_start_index"),
         OFFSET(prefer_x_start), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, FLAGS},
-    {"allowed_extensions", "List of file extensions that hls is allowed to access",
+    {"allowed_extensions", NULL_IF_CONFIG_SMALL("List of file extensions that hls is allowed to access"),
         OFFSET(allowed_extensions), AV_OPT_TYPE_STRING,
         {.str = "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt"
             ",cmfv,cmfa" // Ticket11526 www.nicovideo.jp
@@ -2822,7 +2822,7 @@ static const AVOption hls_options[] = {
             ",fmp4"      // https://github.com/yt-dlp/yt-dlp/issues/12700
         },
         INT_MIN, INT_MAX, FLAGS},
-    {"allowed_segment_extensions", "List of file extensions that hls is allowed to access",
+    {"allowed_segment_extensions", NULL_IF_CONFIG_SMALL("List of file extensions that hls is allowed to access"),
         OFFSET(allowed_segment_extensions), AV_OPT_TYPE_STRING,
         {.str = "3gp,aac,avi,ac3,eac3,flac,mkv,m3u8,m4a,m4s,m4v,mpg,mov,mp2,mp3,mp4,mpeg,mpegts,ogg,ogv,oga,ts,vob,vtt,wav,webvtt"
             ",cmfv,cmfa" // Ticket11526 www.nicovideo.jp
@@ -2831,21 +2831,21 @@ static const AVOption hls_options[] = {
             ",html"      // https://flash1.bogulus.cfd/
         },
         INT_MIN, INT_MAX, FLAGS},
-    {"extension_picky", "Be picky with all extensions matching",
+    {"extension_picky", NULL_IF_CONFIG_SMALL("Be picky with all extensions matching"),
         OFFSET(extension_picky), AV_OPT_TYPE_BOOL, {.i64 = 1}, 0, 1, FLAGS},
-    {"max_reload", "Maximum number of times a insufficient list is attempted to be reloaded",
+    {"max_reload", NULL_IF_CONFIG_SMALL("Maximum number of times a insufficient list is attempted to be reloaded"),
         OFFSET(max_reload), AV_OPT_TYPE_INT, {.i64 = 100}, 0, INT_MAX, FLAGS},
-    {"m3u8_hold_counters", "The maximum number of times to load m3u8 when it refreshes without new segments",
+    {"m3u8_hold_counters", NULL_IF_CONFIG_SMALL("The maximum number of times to load m3u8 when it refreshes without new segments"),
         OFFSET(m3u8_hold_counters), AV_OPT_TYPE_INT, {.i64 = 1000}, 0, INT_MAX, FLAGS},
-    {"http_persistent", "Use persistent HTTP connections",
+    {"http_persistent", NULL_IF_CONFIG_SMALL("Use persistent HTTP connections"),
         OFFSET(http_persistent), AV_OPT_TYPE_BOOL, {.i64 = 1}, 0, 1, FLAGS },
-    {"http_multiple", "Use multiple HTTP connections for fetching segments",
+    {"http_multiple", NULL_IF_CONFIG_SMALL("Use multiple HTTP connections for fetching segments"),
         OFFSET(http_multiple), AV_OPT_TYPE_BOOL, {.i64 = -1}, -1, 1, FLAGS},
-    {"http_seekable", "Use HTTP partial requests, 0 = disable, 1 = enable, -1 = auto",
+    {"http_seekable", NULL_IF_CONFIG_SMALL("Use HTTP partial requests, 0 = disable, 1 = enable, -1 = auto"),
         OFFSET(http_seekable), AV_OPT_TYPE_BOOL, { .i64 = -1}, -1, 1, FLAGS},
-    {"seg_format_options", "Set options for segment demuxer",
+    {"seg_format_options", NULL_IF_CONFIG_SMALL("Set options for segment demuxer"),
         OFFSET(seg_format_opts), AV_OPT_TYPE_DICT, {.str = NULL}, 0, 0, FLAGS},
-    {"seg_max_retry", "Maximum number of times to reload a segment on error.",
+    {"seg_max_retry", NULL_IF_CONFIG_SMALL("Maximum number of times to reload a segment on error."),
      OFFSET(seg_max_retry), AV_OPT_TYPE_INT, {.i64 = 0}, 0, INT_MAX, FLAGS},
     {NULL}
 };

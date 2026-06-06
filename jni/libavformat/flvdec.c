@@ -1973,9 +1973,9 @@ static int flv_read_seek(AVFormatContext *s, int stream_index,
 #define VD AV_OPT_FLAG_VIDEO_PARAM | AV_OPT_FLAG_DECODING_PARAM
 static const AVOption options[] = {
 #if !PAMP_CHANGES
-    { "flv_metadata", "Allocate streams according to the onMetaData array", OFFSET(trust_metadata), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, VD },
-    { "flv_full_metadata", "Dump full metadata of the onMetadata", OFFSET(dump_full_metadata), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, VD },
-    { "flv_ignore_prevtag", "Ignore the Size of previous tag", OFFSET(trust_datasize), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, VD },
+    { "flv_metadata", NULL_IF_CONFIG_SMALL("Allocate streams according to the onMetaData array"), OFFSET(trust_metadata), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, VD },
+    { "flv_full_metadata", NULL_IF_CONFIG_SMALL("Dump full metadata of the onMetadata"), OFFSET(dump_full_metadata), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, VD },
+    { "flv_ignore_prevtag", NULL_IF_CONFIG_SMALL("Ignore the Size of previous tag"), OFFSET(trust_datasize), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, VD },
 #endif
     { NULL }
 };

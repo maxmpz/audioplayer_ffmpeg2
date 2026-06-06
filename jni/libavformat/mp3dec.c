@@ -619,7 +619,7 @@ static int mp3_seek(AVFormatContext *s, int stream_index, int64_t timestamp,
 
 static const AVOption options[] = {
 #if !PAMP_CHANGES // PAMP change: usetoc option not exposed
-    { "usetoc", "use table of contents", offsetof(MP3DecContext, usetoc), AV_OPT_TYPE_BOOL, {.i64 = 0}, 0, 1, AV_OPT_FLAG_DECODING_PARAM},
+    { "usetoc", NULL_IF_CONFIG_SMALL("use table of contents"), offsetof(MP3DecContext, usetoc), AV_OPT_TYPE_BOOL, {.i64 = 0}, 0, 1, AV_OPT_FLAG_DECODING_PARAM},
 #endif
     { NULL },
 };

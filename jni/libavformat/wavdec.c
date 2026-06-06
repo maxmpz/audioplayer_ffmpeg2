@@ -74,12 +74,12 @@ static const AVOption demux_options[] = {
 #if !PAMP_CHANGES // Begin PAMP change - drop ignore_length option (keep w64 offset consistent)
 #define W64_DEMUXER_OPTIONS_OFFSET (1 * CONFIG_WAV_DEMUXER)
 #if CONFIG_WAV_DEMUXER
-    { "ignore_length", "Ignore length", OFFSET(ignore_length), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, DEC },
+    { "ignore_length", NULL_IF_CONFIG_SMALL("Ignore length"), OFFSET(ignore_length), AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, DEC },
 #endif
 #else
 #define W64_DEMUXER_OPTIONS_OFFSET 0
 #endif // End PAMP change
-    { "max_size",      "max size of single packet", OFFSET(max_size), AV_OPT_TYPE_INT, { .i64 = 0 }, 0, 1 << 22, DEC },
+    { "max_size",      NULL_IF_CONFIG_SMALL("max size of single packet"), OFFSET(max_size), AV_OPT_TYPE_INT, { .i64 = 0 }, 0, 1 << 22, DEC },
     { NULL },
 };
 
