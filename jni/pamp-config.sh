@@ -357,7 +357,7 @@ mv ffbuild/config.mak ffbuild/config-${TARGET_CONFIG_SUFFIX}.mak
 mv config.h config-${TARGET_CONFIG_SUFFIX}.h
 mv config_components.h config_components-${TARGET_CONFIG_SUFFIX}.h # NOTE (6.x): components split out of config.h
 mv libavutil/avconfig.h libavutil/avconfig-${TARGET_CONFIG_SUFFIX}.h
-mv libavfilter/filter_list.c libavfilter/filter_list-${TARGET_CONFIG_SUFFIX}.c
+rm -f libavfilter/filter_list.c # NOTE: avfilter --disable'd (CONFIG_AVFILTER=0, not built); filter_list unused — drop configure's stray output instead of curating it
 mv libavcodec/codec_list.c libavcodec/codec_list-${TARGET_CONFIG_SUFFIX}.c
 mv libavcodec/parser_list.c libavcodec/parser_list-${TARGET_CONFIG_SUFFIX}.c
 mv libavcodec/bsf_list.c libavcodec/bsf_list-${TARGET_CONFIG_SUFFIX}.c
@@ -371,7 +371,7 @@ cp config-pamp.h config.h
 cp config_components-pamp.h config_components.h # NOTE (6.x): dispatcher for the split-out component config
 cp config-pamp.mak ffbuild/config.mak
 cp libavutil/avconfig-pamp.h libavutil/avconfig.h
-cp libavfilter/filter_list-pamp.c libavfilter/filter_list.c
+#cp libavfilter/filter_list-pamp.c libavfilter/filter_list.c # NOTE: avfilter disabled — filter_list unused, not curated (see rm above)
 cp libavcodec/codec_list-pamp.c libavcodec/codec_list.c
 cp libavcodec/parser_list-pamp.c libavcodec/parser_list.c
 cp libavcodec/bsf_list-pamp.c libavcodec/bsf_list.c
