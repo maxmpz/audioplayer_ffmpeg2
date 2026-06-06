@@ -10,6 +10,7 @@ SOXR_SRC_DIR := soxr-0.1.3/src
 
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH) \
+    $(FFMPEG_OVERRIDE_ROOT) \
     $(FFMPEG_OVERRIDE_ROOT)/.. \
     $(FFMPEG_ROOT) \
 
@@ -24,7 +25,7 @@ LOCAL_SRC_FILES := \
     cr.c \
     cr32.c \
     cr32s.c \
-    avfft32s.c \
+    pffft32s.c \
     util32s.c \
 
 

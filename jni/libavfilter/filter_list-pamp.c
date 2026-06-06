@@ -1,6 +1,17 @@
-static const AVFilter * const filter_list[] = {
-    &ff_asrc_abuffer,
-    &ff_vsrc_buffer,
-    &ff_asink_abuffer,
-    &ff_vsink_buffer,
-    NULL };
+// NOTE: copied/moved by pamp-config.sh
+
+#if HAVE_ARMV8
+#	if HAVE_PA_MIN_MODE
+#		include "filter_list-arm64-min.c"
+#	else
+#		include "filter_list-arm64.c"
+#	endif
+#elif HAVE_NEON
+#	if HAVE_PA_MIN_MODE
+#		include "filter_list-arm32-min.c"
+#	else
+#		include "filter_list-arm32.c"
+#	endif
+#else
+#	error
+#endif

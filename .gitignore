@@ -4,3 +4,5 @@
 /jni/addr2line64.sh
 /PORTING-PLAN.md
 /.DS_Store
+/jni/bsfs.txt
+/PORTING-PLAN-8x.md

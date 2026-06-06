@@ -50,7 +50,12 @@ include $(LOCAL_PATH)/Makefile
 -include $(LOCAL_PATH)/$(ARCH)/Makefile
 LOCAL_USE_LOCAL_MAKEFILE = no
 else
-include $(FFMPEG_LOCAL_PATH)/Makefile
+# 8.x: FFmpeg lib Makefiles `include` per-subdir Makefiles (libavcodec/{aac,opus,bsf}, libavfilter/{dnn,vulkan})
+# that each define a `clean::` rule, which collides with ndk-build's single-colon `clean:` (GNU make forbids
+# mixing `:`/`::`). Include a sanitized copy: subdir `include`s inlined (to keep their OBJS), clean:: stripped.
+PAMP_FF_OBJS_MK := $(LOCAL_PATH)/.pamp-ffobjs.mk
+$(shell bash $(LOCAL_PATH)/../pamp-ffmk-sanitize.sh $(FFMPEG_LOCAL_PATH)/Makefile "$(SRC_PATH)" "$(ARCH)" > $(PAMP_FF_OBJS_MK))
+include $(PAMP_FF_OBJS_MK)
 -include $(FFMPEG_LOCAL_PATH)/$(ARCH)/Makefile
 endif
 

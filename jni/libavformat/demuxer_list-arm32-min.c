@@ -1,2 +1,2 @@
-static const AVInputFormat * const demuxer_list[] = {
+static const FFInputFormat * const demuxer_list[] = {
     NULL };

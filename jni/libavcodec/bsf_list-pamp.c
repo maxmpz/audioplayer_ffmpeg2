@@ -1,3 +1,17 @@
-static const AVBitStreamFilter * const bitstream_filters[] = {
-    &ff_null_bsf,
-    NULL };
+// NOTE: copied/moved by pamp-config.sh
+
+#if HAVE_ARMV8
+#	if HAVE_PA_MIN_MODE
+#		include "bsf_list-arm64-min.c"
+#	else
+#		include "bsf_list-arm64.c"
+#	endif
+#elif HAVE_NEON
+#	if HAVE_PA_MIN_MODE
+#		include "bsf_list-arm32-min.c"
+#	else
+#		include "bsf_list-arm32.c"
+#	endif
+#else
+#	error
+#endif

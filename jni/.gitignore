@@ -1,7 +1,14 @@
 /addr2line.sh
+# generated per-lib sanitized FFmpeg Makefile (av.mk -> pamp-ffmk-sanitize.sh, strips 8.x subdir clean:: rules)
+/lib*/.pamp-ffobjs.mk
 *.log
 *.fate
 /build-d16.sh
 /list-all.sh
 /listobj.sh
-*.txt
+decoders.txt
+demuxers.txt
+encoders.txt
+parsers.txt
+protocols.txt
+muxers.txt

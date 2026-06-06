@@ -1,0 +1,56 @@
+{
+	global:
+		JNI_On*;
+		
+		av_dict_set_int;
+		av_dict_count;
+		av_dict_get_string;
+		av_opt_find2;
+		av_dict_get;
+		av_dict_set;
+		av_dict_free;
+		av_rescale_q;
+		av_strerror;
+		av_sample_fmt_is_planar;
+		av_get_bytes_per_sample;
+		av_log_set_callback;
+		av_strstart;
+		av_stristr;
+		avio_size;
+		av_match_ext;
+		av_default_item_name;
+
+		av_tx_init;
+		av_tx_uninit;
+		
+		av_base64_decode;
+		av_base64_encode;
+		av_lfg_init;
+		
+		av_malloc;
+		av_free;
+		av_freep;
+		av_sha_alloc;
+		av_sha_init;
+		av_sha_update;
+		av_sha_final;
+
+	  mbedtls_pk_free;
+		mbedtls_pk_init;
+		mbedtls_pk_parse_public_key;
+		mbedtls_pk_parse_key;
+		mbedtls_pk_sign;
+		mbedtls_pk_verify;
+		mbedtls_cipher_init;
+		mbedtls_cipher_info_from_type;
+		mbedtls_cipher_setup;
+		mbedtls_cipher_free;
+		mbedtls_cipher_update;
+		mbedtls_cipher_setkey;
+		mbedtls_cipher_finish;
+		mbedtls_cipher_set_iv;
+		mbedtls_cipher_set_padding_mode;
+		mbedtls_cipher_reset;
+
+	local: *;
+};

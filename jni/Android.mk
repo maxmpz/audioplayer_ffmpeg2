@@ -40,7 +40,9 @@ PA_GLOBAL_APPLY_FFMPEG_OPTS ?= true
 # NOTE: mbedtls doesn't use PA_GLOBAL_CFLAGS
 
 # NOTE: -ffast-math disabled
-PA_GLOBAL_CFLAGS := -std=c99 -fstrict-aliasing -Werror=strict-aliasing
+# FFmpeg 8.x uses bare `static_assert` (a C23 keyword; in C11/C17 it needs <assert.h>, which 8.x doesn't include) ->
+# requires -std=c23 (verified: c99/c11/c17 all fail "expected parameter declarator"). Matches the project C23 standard.
+PA_GLOBAL_CFLAGS := -std=c23 -fstrict-aliasing -Werror=strict-aliasing
 PA_GLOBAL_LDFLAGS :=
 
 # NOTE: these are needed just for ffmpeg compilation - shouldn't be replicated to any other code   

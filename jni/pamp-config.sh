@@ -103,7 +103,7 @@ $FF_FLAGS \
 --extra-cflags=\"-DANDROID \
 $ARM_FF_FLAGS \
 -MMD -MP -fstrict-aliasing -Werror=strict-aliasing -ffunction-sections -funwind-tables -fstack-protector -Wno-psabi -fomit-frame-pointer \
--std=c11 -Wno-sign-compare -Wno-switch -Wno-pointer-sign -ffast-math -Wa,--noexecstack \
+-std=c23 -Wno-sign-compare -Wno-switch -Wno-pointer-sign -ffast-math -Wa,--noexecstack \
 -I$MBEDTLS_PATH/include -I$MBEDTLS_PATH/crypto/include\"\
 "
 
